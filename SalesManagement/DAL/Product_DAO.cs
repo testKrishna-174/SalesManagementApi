@@ -12,22 +12,22 @@ using SalesManagement_API.Helpers;
 
 namespace SalesManagement_API.DAL
 {
-    public class LeadSource_DAO
+    public class Product_DAO
     {
         private readonly IConfiguration _configuration;
         public SalesManagement_API.Helpers.MySqlHelper sqlHelper;
-        public LeadSource_DAO(IConfiguration configuration)
+        public Product_DAO(IConfiguration configuration)
         {
             _configuration = configuration;
             sqlHelper = new SalesManagement_API.Helpers.MySqlHelper(_configuration.GetConnectionString("dbSales"));
         }
-        public DataTable GetLeadSourceInfo()
+        public DataTable GetProductsInfo()
         {
             DataTable dt = new DataTable();
             try
             {
                 DataSet ds = new DataSet();
-                ds = sqlHelper.SP_DataTable_return("usp_GetLeadSourceInfo");
+                ds = sqlHelper.SP_DataTable_return("usp_GetProductsInfo");
                 if (ds.Tables.Count > 0)
                 {
                     dt = ds.Tables[0];
@@ -41,7 +41,7 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
-        public string InsertLeadSourceInfo(LeadSource leadSource)
+        public string InsertProductsInfo(Product product)
         {
             string result = "Failed";
             try
@@ -49,14 +49,13 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@SourceId", leadSource.SourceId),
-                    new MySqlParameter("@SourceName", leadSource.SourceName.Trim()),
-                    new MySqlParameter("@Description",leadSource.Description.Trim()),
-                    new MySqlParameter("@IsActive", leadSource.IsActive),
-                    new MySqlParameter("@UserId", leadSource.CreatedBy),
+                    new MySqlParameter("@ProductName", product.ProductName.Trim()),
+                    new MySqlParameter("@Description",product.Description.Trim()),
+                    new MySqlParameter("@IsActive", product.IsActive),
+                    new MySqlParameter("@UserId", product.CreatedBy),
                 };
 
-                ds = sqlHelper.SP_DataTable_return("usp_InsertLeadSourceInfo", commandParameters);
+                ds = sqlHelper.SP_DataTable_return("usp_InsertProductsInfo", commandParameters);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     result = Convert.ToString((from DataRow dr in ds.Tables[0].Rows
@@ -70,7 +69,7 @@ namespace SalesManagement_API.DAL
             return result;
         }
 
-        public string UpdateLeadSourceInfo(LeadSource leadSource)
+        public string UpdateProductsInfo(Product product)
         {
             string result = "Failed";
             try
@@ -78,15 +77,14 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                   new MySqlParameter("@SourceId", leadSource.SourceId),
-                    new MySqlParameter("@SourceName", leadSource.SourceName.Trim()),
-                    new MySqlParameter("@Description",leadSource.Description.Trim()),
+                    new MySqlParameter("@ProductName", product.ProductName.Trim()),
+                    new MySqlParameter("@Description",product.Description.Trim()),                    
                     new MySqlParameter("@IsActive", 1),
-                    new MySqlParameter("@UserId", leadSource.UpdatedBy),
+                    new MySqlParameter("@UserId", product.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
                 };
 
-                ds = sqlHelper.SP_DataTable_return("usp_UpdateLeadSourceInfo", commandParameters);
+                ds = sqlHelper.SP_DataTable_return("usp_UpdateProductsInfo", commandParameters);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     result = Convert.ToString((from DataRow dr in ds.Tables[0].Rows
@@ -100,7 +98,7 @@ namespace SalesManagement_API.DAL
             return result;
         }
 
-        public string DeleteLeadSourceInfo(LeadSource leadSource)
+        public string DeleteProductsInfo(Product product)
         {
             string result = "Failed";
             try
@@ -108,15 +106,14 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                     new MySqlParameter("@SourceId", DBNull.Value),
-                    new MySqlParameter("@SourceName", DBNull.Value),
+                     new MySqlParameter("@ProductName", DBNull.Value),
                     new MySqlParameter("@Description",DBNull.Value),
                     new MySqlParameter("@IsActive", 0),
-                    new MySqlParameter("@UserId", leadSource.UpdatedBy),
+                    new MySqlParameter("@UserId", product.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),
                 };
 
-                ds = sqlHelper.SP_DataTable_return("usp_UpdateLeadSourceInfo", commandParameters);
+                ds = sqlHelper.SP_DataTable_return("usp_UpdateProductsInfo", commandParameters);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     result = Convert.ToString((from DataRow dr in ds.Tables[0].Rows
@@ -130,5 +127,10 @@ namespace SalesManagement_API.DAL
             return result;
         }
     }
-}  
-    
+}
+
+
+
+
+
+

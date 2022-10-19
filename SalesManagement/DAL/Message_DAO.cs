@@ -12,22 +12,22 @@ using SalesManagement_API.Helpers;
 
 namespace SalesManagement_API.DAL
 {
-    public class LeadSource_DAO
+    public class Message_DAO
     {
         private readonly IConfiguration _configuration;
         public SalesManagement_API.Helpers.MySqlHelper sqlHelper;
-        public LeadSource_DAO(IConfiguration configuration)
+        public Message_DAO(IConfiguration configuration)
         {
             _configuration = configuration;
             sqlHelper = new SalesManagement_API.Helpers.MySqlHelper(_configuration.GetConnectionString("dbSales"));
         }
-        public DataTable GetLeadSourceInfo()
+        public DataTable GetMessageInfo()
         {
             DataTable dt = new DataTable();
             try
             {
                 DataSet ds = new DataSet();
-                ds = sqlHelper.SP_DataTable_return("usp_GetLeadSourceInfo");
+                ds = sqlHelper.SP_DataTable_return("usp_GetMessagesInfo");
                 if (ds.Tables.Count > 0)
                 {
                     dt = ds.Tables[0];
@@ -41,7 +41,7 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
-        public string InsertLeadSourceInfo(LeadSource leadSource)
+        public string InsertMessagesInfo(Message message)
         {
             string result = "Failed";
             try
@@ -49,14 +49,14 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@SourceId", leadSource.SourceId),
-                    new MySqlParameter("@SourceName", leadSource.SourceName.Trim()),
-                    new MySqlParameter("@Description",leadSource.Description.Trim()),
-                    new MySqlParameter("@IsActive", leadSource.IsActive),
-                    new MySqlParameter("@UserId", leadSource.CreatedBy),
+                    new MySqlParameter("@Name", message.Name.Trim()),
+                    new MySqlParameter("@DisplayText",message.DisplayText.Trim()),
+                    new MySqlParameter("@StatusCode",message.StatusCode.Trim()),
+                    new MySqlParameter("@IsActive", message.IsActive),
+                    new MySqlParameter("@UserId", message.CreatedBy),
                 };
 
-                ds = sqlHelper.SP_DataTable_return("usp_InsertLeadSourceInfo", commandParameters);
+                ds = sqlHelper.SP_DataTable_return("usp_InsertMessagesInfo", commandParameters);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     result = Convert.ToString((from DataRow dr in ds.Tables[0].Rows
@@ -70,7 +70,7 @@ namespace SalesManagement_API.DAL
             return result;
         }
 
-        public string UpdateLeadSourceInfo(LeadSource leadSource)
+        public string UpdateMessagesInfo(Message message)
         {
             string result = "Failed";
             try
@@ -78,15 +78,15 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                   new MySqlParameter("@SourceId", leadSource.SourceId),
-                    new MySqlParameter("@SourceName", leadSource.SourceName.Trim()),
-                    new MySqlParameter("@Description",leadSource.Description.Trim()),
+                    new MySqlParameter("@Name", message.Name.Trim()),
+                    new MySqlParameter("@DisplayText",message.DisplayText.Trim()),
+                    new MySqlParameter("@StatusCode",message.StatusCode.Trim()),
                     new MySqlParameter("@IsActive", 1),
-                    new MySqlParameter("@UserId", leadSource.UpdatedBy),
+                    new MySqlParameter("@UserId", message.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
                 };
 
-                ds = sqlHelper.SP_DataTable_return("usp_UpdateLeadSourceInfo", commandParameters);
+                ds = sqlHelper.SP_DataTable_return("usp_UpdateMessagesInfo", commandParameters);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     result = Convert.ToString((from DataRow dr in ds.Tables[0].Rows
@@ -100,7 +100,7 @@ namespace SalesManagement_API.DAL
             return result;
         }
 
-        public string DeleteLeadSourceInfo(LeadSource leadSource)
+        public string DeleteMessageInfo(Message message)
         {
             string result = "Failed";
             try
@@ -108,15 +108,15 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                     new MySqlParameter("@SourceId", DBNull.Value),
-                    new MySqlParameter("@SourceName", DBNull.Value),
-                    new MySqlParameter("@Description",DBNull.Value),
+                     new MySqlParameter("@Name", DBNull.Value),
+                    new MySqlParameter("@DisplayText",DBNull.Value),
+                    new MySqlParameter("@StatusCode",DBNull.Value),
                     new MySqlParameter("@IsActive", 0),
-                    new MySqlParameter("@UserId", leadSource.UpdatedBy),
+                    new MySqlParameter("@UserId", message.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),
                 };
 
-                ds = sqlHelper.SP_DataTable_return("usp_UpdateLeadSourceInfo", commandParameters);
+                ds = sqlHelper.SP_DataTable_return("usp_UpdateMessagesInfo", commandParameters);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     result = Convert.ToString((from DataRow dr in ds.Tables[0].Rows
@@ -130,5 +130,7 @@ namespace SalesManagement_API.DAL
             return result;
         }
     }
-}  
-    
+}
+
+
+
