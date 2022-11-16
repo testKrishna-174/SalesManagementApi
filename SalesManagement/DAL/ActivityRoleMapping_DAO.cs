@@ -77,7 +77,7 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@RoleMappingId", activityRoleMapping.r),
+                    new MySqlParameter("@RoleMappingId", activityRoleMapping.RoleMappingId),
                     new MySqlParameter("@ActivityId", activityRoleMapping.ActivityId),
                     new MySqlParameter("@DesiginationId", activityRoleMapping.DesignationId),
                     new MySqlParameter("@IsActive", 1),

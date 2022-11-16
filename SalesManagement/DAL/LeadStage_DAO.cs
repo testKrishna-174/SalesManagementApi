@@ -77,7 +77,7 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@StageName", leadStage.StageName)
+                    new MySqlParameter("@StageName", leadStage.StageName),
                     new MySqlParameter("@Description",leadStage.Description.Trim()),
                     new MySqlParameter("@IsActive", 1),
                     new MySqlParameter("@UserId", leadStage.UpdatedBy),
