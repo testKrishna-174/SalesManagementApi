@@ -51,7 +51,7 @@ namespace SalesManagement_API.DAL
                 {
                     new MySqlParameter("@ActivityCode", activities.ActivityCode.Trim()),
                     new MySqlParameter("@ActivityName", activities.ActivityName.Trim()),
-                    new MySqlParameter("@Description", activities.Description.Trim()),
+                    new MySqlParameter("@DescriptionValue", activities.Description.Trim()),
                     new MySqlParameter("@IsActive", activities.IsActive),
                     new MySqlParameter("@UserId", activities.CreatedBy),
                 };
