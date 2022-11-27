@@ -21,6 +21,17 @@ namespace SalesManagement_API.Controllers
         {
             _configuration = configuration;
         }
+
+        [HttpGet]
+        [Route("GetFileUploadInfo")]
+        public JsonResult GetFileUploadInfo()
+        {
+            DataTable table = new DataTable();
+            FileUpload_BAO bao = new FileUpload_BAO(_configuration);
+            table = bao.GetFileUploadInfo();
+            return new JsonResult(table);
+        }
+
         [HttpPost]
         [Route("InsertFileUpload")]
         public JsonResult InsertDesignation(FileUpload fileUploadDetais)

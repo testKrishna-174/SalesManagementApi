@@ -23,6 +23,26 @@ namespace SalesManagement_API.DAL
             sqlHelper = new SalesManagement_API.Helpers.MySqlHelper(_configuration.GetConnectionString("dbSales"));
         }
 
+        public DataTable GetFileUploadInfo()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = new DataSet();
+                ds = sqlHelper.SP_DataTable_return("usp_GetFileInfo");
+                if (ds.Tables.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
         public string InsertFileUploadDetails(FileUpload fileUploadDetais)
         {
             string result = "Failed";
