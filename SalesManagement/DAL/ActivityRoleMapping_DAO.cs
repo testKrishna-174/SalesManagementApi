@@ -50,7 +50,7 @@ namespace SalesManagement_API.DAL
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
                     new MySqlParameter("@ActivityId", activityRoleMapping.ActivityId),
-                    new MySqlParameter("@DesiginationId", activityRoleMapping.DesignationId),
+                    new MySqlParameter("@DesignationId", activityRoleMapping.DesignationId),
                     new MySqlParameter("@IsActive", activityRoleMapping.IsActive),
                     new MySqlParameter("@UserId", activityRoleMapping.CreatedBy),
                 };
@@ -79,7 +79,7 @@ namespace SalesManagement_API.DAL
                 {
                     new MySqlParameter("@RoleMappingId", activityRoleMapping.RoleMappingId),
                     new MySqlParameter("@ActivityId", activityRoleMapping.ActivityId),
-                    new MySqlParameter("@DesiginationId", activityRoleMapping.DesignationId),
+                    new MySqlParameter("@DesignationId", activityRoleMapping.DesignationId),
                     new MySqlParameter("@IsActive", 1),
                     new MySqlParameter("@UserId", activityRoleMapping.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
@@ -109,7 +109,7 @@ namespace SalesManagement_API.DAL
                 {
                      new MySqlParameter("@ActivityCode", DBNull.Value),
                     new MySqlParameter("@ActivityName", DBNull.Value),
-                    new MySqlParameter("@DesiginationId",DBNull.Value),
+                    new MySqlParameter("@DesignationId",DBNull.Value),
                     new MySqlParameter("@IsActive", 0),
                     new MySqlParameter("@UserId", activityRoleMapping.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),

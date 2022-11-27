@@ -135,7 +135,7 @@ namespace SalesManagement_API.DAL
                 {
                      new MySqlParameter("@ActivityCode", DBNull.Value),
                     new MySqlParameter("@ActivityName", DBNull.Value),
-                    new MySqlParameter("@DesiginationId",DBNull.Value),
+                    new MySqlParameter("@DesignationId",DBNull.Value),
                     new MySqlParameter("@IsActive", 0),
                     new MySqlParameter("@UserId", activities.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),
