@@ -16,4 +16,5 @@ namespace SalesManagement_API.Models
         public DateTime UpdatedOn { get; set; }
         public int UpdatedBy { get; set; }
 
+    }
 }

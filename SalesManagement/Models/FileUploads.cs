@@ -14,6 +14,7 @@ namespace SalesManagement_API.Models
         public int UploadedBy { get; set; }
         public bool IsProcessed { get; set; }
         public string ErrorMessage { get; set; }
+        public List<FileUploadStaging> StagingFileDetails { get; set; }
 
     }
 }
