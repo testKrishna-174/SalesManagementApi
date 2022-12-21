@@ -49,11 +49,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@Name", message.Name.Trim()),
-                    new MySqlParameter("@DisplayText",message.DisplayText.Trim()),
-                    new MySqlParameter("@StatusCode",message.StatusCode.Trim()),
-                    new MySqlParameter("@IsActive", message.IsActive),
-                    new MySqlParameter("@UserId", message.CreatedBy),
+                    new MySqlParameter("@U_NameValue", message.Name.Trim()),
+                    new MySqlParameter("@U_DisplayText",message.DisplayText.Trim()),
+                    new MySqlParameter("@U_StatusCode",message.StatusCode.Trim()),
+                    new MySqlParameter("@U_IsActive", message.IsActive),
+                    new MySqlParameter("@U_UserId", message.CreatedBy),
                 };
 
                 ds = sqlHelper.SP_DataTable_return("usp_InsertMessagesInfo", commandParameters);
@@ -78,11 +78,13 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@name", message.Name.Trim()),
-                    new MySqlParameter("@displayText",message.DisplayText.Trim()),
-                    new MySqlParameter("@StatusCode",message.StatusCode.Trim()),
-                    new MySqlParameter("@IsActive", 1),
-                    new MySqlParameter("@UserId", message.UpdatedBy),
+                    
+                    new MySqlParameter("@U_MessageId",message.MessageId),
+                    new MySqlParameter("@U_NameValue", message.Name.Trim()),
+                    new MySqlParameter("@U_DisplayText",message.DisplayText.Trim()),
+                    new MySqlParameter("@U_StatusCode",message.StatusCode.Trim()),
+                    new MySqlParameter("@U_IsActive", 1),
+                    new MySqlParameter("@U_UserId", message.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
                 };
 
@@ -108,7 +110,7 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                     new MySqlParameter("@Name", DBNull.Value),
+                     new MySqlParameter("@U_NameValue", DBNull.Value),
                     new MySqlParameter("@DisplayText",DBNull.Value),
                     new MySqlParameter("@StatusCode",DBNull.Value),
                     new MySqlParameter("@IsActive", 0),

@@ -78,9 +78,10 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
+                    new MySqlParameter("@U_ActivityId",activities.ActivityId),
                     new MySqlParameter("@U_ActivityCode", activities.ActivityCode.Trim()),
                     new MySqlParameter("@U_ActivityName", activities.ActivityName.Trim()),
-                    new MySqlParameter("@U_Description", activities.Description.Trim()),
+                    new MySqlParameter("@U_DescriptionValue", activities.Description.Trim()),
                     new MySqlParameter("@U_IsActive", 1),
                     new MySqlParameter("@U_UserId", activities.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
@@ -108,9 +109,10 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
+                    new MySqlParameter("@U_ActivityId",activities.ActivityId),
                      new MySqlParameter("@U_ActivityCode", DBNull.Value),
                     new MySqlParameter("@U_ActivityName", DBNull.Value),
-                    new MySqlParameter("@U_Description",DBNull.Value),
+                    new MySqlParameter("@U_DescriptionValue",DBNull.Value),
                     new MySqlParameter("@U_IsActive", 0),
                     new MySqlParameter("@U_UserId", activities.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),

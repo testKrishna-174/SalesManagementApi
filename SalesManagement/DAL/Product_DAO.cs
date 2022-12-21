@@ -77,6 +77,7 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
+                    new MySqlParameter("@U_ProductId", product.ProductId),
                     new MySqlParameter("@U_ProductName", product.ProductName.Trim()),
                     new MySqlParameter("@U_DescriptionValue",product.Description.Trim()),                    
                     new MySqlParameter("@U_IsActive", 1),
@@ -106,6 +107,7 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
+                    new MySqlParameter("@U_ProductId", product.ProductId),
                      new MySqlParameter("@U_ProductName", DBNull.Value),
                     new MySqlParameter("@U_DescriptionValue",DBNull.Value),
                     new MySqlParameter("@U_IsActive", 0),
