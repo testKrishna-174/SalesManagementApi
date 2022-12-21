@@ -78,8 +78,8 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@Name", message.Name.Trim()),
-                    new MySqlParameter("@DisplayText",message.DisplayText.Trim()),
+                    new MySqlParameter("@name", message.Name.Trim()),
+                    new MySqlParameter("@displayText",message.DisplayText.Trim()),
                     new MySqlParameter("@StatusCode",message.StatusCode.Trim()),
                     new MySqlParameter("@IsActive", 1),
                     new MySqlParameter("@UserId", message.UpdatedBy),

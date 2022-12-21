@@ -49,10 +49,10 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@StageName", leadStage.StageName.Trim()),
-                    new MySqlParameter("@Description",leadStage.Description.Trim()),
-                    new MySqlParameter("@IsActive", leadStage.IsActive),
-                    new MySqlParameter("@UserId", leadStage.CreatedBy),
+                    new MySqlParameter("@U_StageName", leadStage.StageName.Trim()),
+                    new MySqlParameter("@U_Description",leadStage.Description.Trim()),
+                    new MySqlParameter("@U_IsActive", leadStage.IsActive),
+                    new MySqlParameter("@U_UserId", leadStage.CreatedBy),
                 };
 
                 ds = sqlHelper.SP_DataTable_return("usp_InsertLeadStageInfo", commandParameters);
@@ -77,10 +77,10 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@StageName", leadStage.StageName),
-                    new MySqlParameter("@Description",leadStage.Description.Trim()),
-                    new MySqlParameter("@IsActive", 1),
-                    new MySqlParameter("@UserId", leadStage.UpdatedBy),
+                    new MySqlParameter("@U_StageName", leadStage.StageName),
+                    new MySqlParameter("@U_Description",leadStage.Description.Trim()),
+                    new MySqlParameter("@U_IsActive", 1),
+                    new MySqlParameter("@U_UserId", leadStage.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
                 };
 
@@ -106,10 +106,10 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                     new MySqlParameter("@StageName", DBNull.Value),                    
-                    new MySqlParameter("@Description",DBNull.Value),
-                    new MySqlParameter("@IsActive", 0),
-                    new MySqlParameter("@UserId", leadStage.UpdatedBy),
+                     new MySqlParameter("@U_StageName", DBNull.Value),                    
+                    new MySqlParameter("@U_Description",DBNull.Value),
+                    new MySqlParameter("@U_IsActive", 0),
+                    new MySqlParameter("@U_UserId", leadStage.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),
                 };
 

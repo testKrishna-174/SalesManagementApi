@@ -49,11 +49,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@ActivityCode", activities.ActivityCode.Trim()),
-                    new MySqlParameter("@ActivityName", activities.ActivityName.Trim()),
-                    new MySqlParameter("@DescriptionValue", activities.Description.Trim()),
-                    new MySqlParameter("@IsActive", activities.IsActive),
-                    new MySqlParameter("@UserId", activities.CreatedBy),
+                    new MySqlParameter("@U_ActivityCode", activities.ActivityCode.Trim()),
+                    new MySqlParameter("@U_ActivityName", activities.ActivityName.Trim()),
+                    new MySqlParameter("@U_DescriptionValue", activities.Description.Trim()),
+                    new MySqlParameter("@U_IsActive", activities.IsActive),
+                    new MySqlParameter("@U_UserId", activities.CreatedBy),
                 };
 
                 ds = sqlHelper.SP_DataTable_return("usp_InsertActivitiesInfo", commandParameters);
@@ -78,11 +78,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@ActivityCode", activities.ActivityCode.Trim()),
-                    new MySqlParameter("@ActivityName", activities.ActivityName.Trim()),
-                    new MySqlParameter("@Description", activities.Description.Trim()),
-                    new MySqlParameter("@IsActive", 1),
-                    new MySqlParameter("@UserId", activities.UpdatedBy),
+                    new MySqlParameter("@U_ActivityCode", activities.ActivityCode.Trim()),
+                    new MySqlParameter("@U_ActivityName", activities.ActivityName.Trim()),
+                    new MySqlParameter("@U_Description", activities.Description.Trim()),
+                    new MySqlParameter("@U_IsActive", 1),
+                    new MySqlParameter("@U_UserId", activities.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
                 };
 
@@ -108,11 +108,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                     new MySqlParameter("@ActivityCode", DBNull.Value),
-                    new MySqlParameter("@ActivityName", DBNull.Value),
-                    new MySqlParameter("@Description",DBNull.Value),
-                    new MySqlParameter("@IsActive", 0),
-                    new MySqlParameter("@UserId", activities.UpdatedBy),
+                     new MySqlParameter("@U_ActivityCode", DBNull.Value),
+                    new MySqlParameter("@U_ActivityName", DBNull.Value),
+                    new MySqlParameter("@U_Description",DBNull.Value),
+                    new MySqlParameter("@U_IsActive", 0),
+                    new MySqlParameter("@U_UserId", activities.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),
                 };
 
