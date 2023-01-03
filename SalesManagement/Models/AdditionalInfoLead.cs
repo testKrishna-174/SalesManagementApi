@@ -26,7 +26,8 @@ namespace SalesManagement_API.Models
         public string Location_Address_Zip { get; set; }
         public string Location_County { get; set; }
         public DateTime Date_Entered { get; set; }
-
+        public int PageSize { get; set; }
+        public int PageCount { get; set; }
 
     }
 }

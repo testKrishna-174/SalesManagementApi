@@ -13,6 +13,8 @@ namespace SalesManagement_API.Models
         public string Comments { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
+        public int PageSize { get; set; }
+        public int PageCount { get; set; }
 
     }
 }
