@@ -47,5 +47,7 @@ namespace SalesManagement_API.Models
 		public string LOCATION_ADDRESS_STATE { get; set; }
 		public string LOCATION_ADDRESS_ZIP { get; set; }
 		public string LOCATION_COUNTY { get; set; }
+		public int PageSize { get; set; }
+		public int PageCount { get; set; }
 	}
 }

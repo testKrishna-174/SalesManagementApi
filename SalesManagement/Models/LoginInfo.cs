@@ -12,6 +12,8 @@ namespace SalesManagement_API.Models
         public string Password { get; set; }
         public DateTime LastLoggedOn { get; set; }
         public bool IsActive { get; set; }
+        public int PageSize { get; set; }
+        public int PageCount { get; set; }
 
     }
 }

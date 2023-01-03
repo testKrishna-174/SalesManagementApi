@@ -15,6 +15,8 @@ namespace SalesManagement_API.Models
         public int CreatedBy { get; set; }
         public DateTime UpdateOn { get; set; }
         public int UpdateBy { get; set; }
+        public int PageSize { get; set; }
+        public int PageCount { get; set; }
 
     }
 }

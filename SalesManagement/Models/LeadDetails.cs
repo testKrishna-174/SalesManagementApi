@@ -27,6 +27,8 @@ namespace SalesManagement_API.Models
         public string EmployeeSizeRange { get; set; }
         public decimal SalesVolume { get; set; }
         public string SalesVolumeRange { get; set; }
+        public int PageSize { get; set; }
+        public int PageCount { get; set; }
 
 
     }

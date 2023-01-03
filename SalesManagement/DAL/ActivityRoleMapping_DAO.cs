@@ -49,10 +49,10 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@ActivityId", activityRoleMapping.ActivityId),
-                    new MySqlParameter("@DesignationId", activityRoleMapping.DesignationId),
-                    new MySqlParameter("@IsActive", activityRoleMapping.IsActive),
-                    new MySqlParameter("@UserId", activityRoleMapping.CreatedBy),
+                    new MySqlParameter("@U_ActivityId", activityRoleMapping.ActivityId),
+                    new MySqlParameter("@U_DesiginationId", activityRoleMapping.DesignationId),
+                    new MySqlParameter("@U_IsActive", activityRoleMapping.IsActive),
+                    new MySqlParameter("@U_UserId", activityRoleMapping.CreatedBy),
                 };
 
                 ds = sqlHelper.SP_DataTable_return("usp_InsertActivityRoleMappingInfo", commandParameters);
@@ -77,11 +77,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@RoleMappingId", activityRoleMapping.RoleMappingId),
-                    new MySqlParameter("@ActivityId", activityRoleMapping.ActivityId),
-                    new MySqlParameter("@DesignationId", activityRoleMapping.DesignationId),
-                    new MySqlParameter("@IsActive", 1),
-                    new MySqlParameter("@UserId", activityRoleMapping.UpdatedBy),
+                    new MySqlParameter("@U_RoleMappingId", activityRoleMapping.RoleMappingId),
+                    new MySqlParameter("@U_ActivityId", activityRoleMapping.ActivityId),
+                    new MySqlParameter("@U_DesiginationId", activityRoleMapping.DesignationId),
+                    new MySqlParameter("@U_IsActive", 1),
+                    new MySqlParameter("@U_UserId", activityRoleMapping.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
                 };
 
@@ -107,11 +107,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                     new MySqlParameter("@ActivityCode", DBNull.Value),
-                    new MySqlParameter("@ActivityName", DBNull.Value),
-                    new MySqlParameter("@DesignationId",DBNull.Value),
-                    new MySqlParameter("@IsActive", 0),
-                    new MySqlParameter("@UserId", activityRoleMapping.UpdatedBy),
+                     new MySqlParameter("@U_RoleMappingId", DBNull.Value),
+                    new MySqlParameter("@U_ActivityId", DBNull.Value),
+                    new MySqlParameter("@U_DesiginationId",DBNull.Value),
+                    new MySqlParameter("@U_IsActive", 0),
+                    new MySqlParameter("@U_UserId", activityRoleMapping.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),
                 };
 

@@ -49,10 +49,10 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@ProductName", product.ProductName.Trim()),
-                    new MySqlParameter("@Description",product.Description.Trim()),
-                    new MySqlParameter("@IsActive", product.IsActive),
-                    new MySqlParameter("@UserId", product.CreatedBy),
+                    new MySqlParameter("@U_ProductName", product.ProductName.Trim()),
+                    new MySqlParameter("@U_DescriptionValue",product.Description.Trim()),
+                    new MySqlParameter("@U_IsActive", product.IsActive),
+                    new MySqlParameter("@U_UserId", product.CreatedBy),
                 };
 
                 ds = sqlHelper.SP_DataTable_return("usp_InsertProductsInfo", commandParameters);
@@ -77,10 +77,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                    new MySqlParameter("@ProductName", product.ProductName.Trim()),
-                    new MySqlParameter("@Description",product.Description.Trim()),                    
-                    new MySqlParameter("@IsActive", 1),
-                    new MySqlParameter("@UserId", product.UpdatedBy),
+                    new MySqlParameter("@U_ProductId", product.ProductId),
+                    new MySqlParameter("@U_ProductName", product.ProductName.Trim()),
+                    new MySqlParameter("@U_DescriptionValue",product.Description.Trim()),                    
+                    new MySqlParameter("@U_IsActive", 1),
+                    new MySqlParameter("@U_UserId", product.UpdatedBy),
                     new MySqlParameter("@OperationType", "UPDATE"),
                 };
 
@@ -106,10 +107,11 @@ namespace SalesManagement_API.DAL
                 DataSet ds = new DataSet();
                 MySqlParameter[] commandParameters = new MySqlParameter[]
                 {
-                     new MySqlParameter("@ProductName", DBNull.Value),
-                    new MySqlParameter("@Description",DBNull.Value),
-                    new MySqlParameter("@IsActive", 0),
-                    new MySqlParameter("@UserId", product.UpdatedBy),
+                    new MySqlParameter("@U_ProductId", product.ProductId),
+                     new MySqlParameter("@U_ProductName", DBNull.Value),
+                    new MySqlParameter("@U_DescriptionValue",DBNull.Value),
+                    new MySqlParameter("@U_IsActive", 0),
+                    new MySqlParameter("@U_UserId", product.UpdatedBy),
                     new MySqlParameter("@OperationType", "DELETE"),
                 };
 
