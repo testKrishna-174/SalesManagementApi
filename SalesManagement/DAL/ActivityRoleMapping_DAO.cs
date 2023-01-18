@@ -41,6 +41,31 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
+
+        public DataTable GetActivityRoleMappingInfoById(ActivityRoleMapping activityRoleMapping)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlParameter[] commandParameters = new MySqlParameter[]
+                {
+                    new MySqlParameter("@U_RoleMappingId", activityRoleMapping.ActivityId),
+                };
+                ds = sqlHelper.SP_DataTable_return("usp_GetActivityRoleMappingInfoById",commandParameters);
+                if (ds.Tables.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
         public string InsertActivityRoleMapping(ActivityRoleMapping activityRoleMapping)
         {
             string result = "Failed";

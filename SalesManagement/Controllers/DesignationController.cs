@@ -33,6 +33,16 @@ namespace SalesManagement_API.Controllers
         }
 
         [HttpPost]
+        [Route("GetDesignationInfoById")]
+        public JsonResult GetDesignationInfoById(Designation designation)
+        {
+            DataTable table = new DataTable();
+            Designation_BAO bao = new Designation_BAO(_configuration);
+            table = bao.GetDesignationInfoById(designation);
+            return new JsonResult(table);
+        }
+
+        [HttpPost]
         [Route("InsertDesignation")]
         public JsonResult InsertDesignation(Designation designation)
         {

@@ -28,6 +28,19 @@ namespace SalesManagement_API.BAL
             dt = dao.GetLeadSourceInfo();
             return dt;
         }
+        public DataTable GetLeadSourceInfoById(LeadSource leadSource)
+        {
+            DataTable dt = new DataTable();
+            if (leadSource == null || leadSource.SourceId <= 0)
+            {
+                throw new ArgumentException("Values not provided");
+            }
+            else
+            {
+                dt = dao.GetLeadSourceInfoById(leadSource);
+            }
+            return dt;
+        }
 
         public string InsertLeadSourceInfo(LeadSource leadSource)
         {

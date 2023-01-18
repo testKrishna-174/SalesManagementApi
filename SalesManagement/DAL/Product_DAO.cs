@@ -41,6 +41,30 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
+        public DataTable GetProductsInfoById(Product product)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlParameter[] commandParameters = new MySqlParameter[]
+               {
+                    new MySqlParameter("@U_ProductId", product.ProductId),
+               };
+                ds = sqlHelper.SP_DataTable_return("usp_GetProductsInfoById",commandParameters);
+                if (ds.Tables.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
         public string InsertProductsInfo(Product product)
         {
             string result = "Failed";

@@ -33,6 +33,16 @@ namespace SalesManagement_API.Controllers
         }
 
         [HttpPost]
+        [Route("GetActivityRoleMappingInfoById")]
+        public JsonResult GetActivityRoleMappingInfoById(ActivityRoleMapping activityRoleMapping)
+        {
+            DataTable table = new DataTable();
+            ActivityRoleMapping_BAO bao = new ActivityRoleMapping_BAO(_configuration);
+            table = bao.GetActivityRoleMappingInfoById(activityRoleMapping);
+            return new JsonResult(table);
+        }
+
+        [HttpPost]
         [Route("InsertActivityRoleMapping")]
         public JsonResult InsertActivityRoleMapping(ActivityRoleMapping activityRoleMapping)
         {

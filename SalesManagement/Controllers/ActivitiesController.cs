@@ -31,6 +31,15 @@ namespace SalesManagement_API.Controllers
             table = bao.GetActivitiesInfo();
             return new JsonResult(table);
         }
+        [HttpPost]
+        [Route("GetActivitiesInfoById")]
+        public JsonResult GetActivitiesInfoById(Activities activities)
+        {
+            DataTable table = new DataTable();
+            Activities_BAO bao = new Activities_BAO(_configuration);
+            table = bao.GetActivitiesInfoById(activities);
+            return new JsonResult(table);
+        }
 
         [HttpPost]
         [Route("InsertActivities")]

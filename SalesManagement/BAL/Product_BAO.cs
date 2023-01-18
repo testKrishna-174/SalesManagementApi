@@ -24,9 +24,25 @@ namespace SalesManagement_API.BAL
         }
         public DataTable GetProductsInfo()
         {
+
             DataTable dt = new DataTable();
             dt = dao.GetProductsInfo();
             return dt;
+        }
+
+        public DataTable GetProductsInfoById(Product product)
+        {
+            DataTable dt = new DataTable();
+            if (product == null || product.ProductId <= 0)
+            {
+                throw new ArgumentException("Values not provided");
+            }
+            else
+            {
+                dt = dao.GetProductsInfoById(product);
+            }
+            return dt;
+        
         }
 
         public string InsertProductsInfo(Product product)

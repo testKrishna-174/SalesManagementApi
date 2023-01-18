@@ -41,6 +41,30 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
+        public DataTable GetLeadStageInfoById(LeadStage leadStage)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlParameter[] commandParameters = new MySqlParameter[]
+               {
+                    new MySqlParameter("@U_LeadStageId", leadStage.LeadStageId),
+               };
+                ds = sqlHelper.SP_DataTable_return("usp_GetLeadStageInfoById",commandParameters);
+                if (ds.Tables.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
         public string InsertLeadStageInfo(LeadStage leadStage)
         {
             string result = "Failed";

@@ -34,6 +34,16 @@ namespace SalesManagement_API.Controllers
         }
 
         [HttpPost]
+        [Route("GetMessageInfoById")]
+        public JsonResult GetMessageInfoById(Message message)
+        {
+            DataTable table = new DataTable();
+            Message_BAO bao = new Message_BAO(_configuration);
+            table = bao.GetMessageInfoById(message);
+            return new JsonResult(table);
+        }
+
+        [HttpPost]
         [Route("InsertMessagesInfo")]
         public JsonResult InsertMessagesInfo(Message message)
         {

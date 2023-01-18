@@ -33,6 +33,16 @@ namespace SalesManagement_API.Controllers
         }
 
         [HttpPost]
+        [Route("GetLeadSourceInfoById")]
+        public JsonResult GetLeadSourceInfoById(LeadSource leadSource)
+        {
+            DataTable table = new DataTable();
+            LeadSource_BAO bao = new LeadSource_BAO(_configuration);
+            table = bao.GetLeadSourceInfoById(leadSource);
+            return new JsonResult(table);
+        }
+
+        [HttpPost]
         [Route("InsertLeadSourceInfo")]
         public JsonResult InsertLeadSourceInfo(LeadSource leadSource)
         {

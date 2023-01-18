@@ -27,6 +27,21 @@ namespace SalesManagement_API.BAL
             DataTable dt = new DataTable();
             dt = dao.GetActivityRoleMappingInfo();
             return dt;
+
+        }
+
+        public DataTable GetActivityRoleMappingInfoById(ActivityRoleMapping activityRoleMapping)
+        {
+            DataTable dt = new DataTable();
+            if (activityRoleMapping == null || activityRoleMapping.RoleMappingId <= 0)
+            {
+                throw new ArgumentException("Values not provided");
+            }
+            else
+            {
+                dt = dao.GetActivityRoleMappingInfoById(activityRoleMapping);
+            }
+            return dt;
         }
 
         public string InsertActivityRoleMapping(ActivityRoleMapping activityRoleMapping)

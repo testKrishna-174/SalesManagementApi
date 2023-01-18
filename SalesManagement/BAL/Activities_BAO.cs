@@ -30,7 +30,22 @@ namespace SalesManagement_API.BAL
                 return dt;
             }
 
-            public string InsertActivities(Activities activities)
+        public DataTable GetActivitiesInfoById(Activities activities)
+        {
+            DataTable dt = new DataTable();
+            if (activities == null || activities.ActivityId <= 0)
+            {
+                throw new ArgumentException("Values not provided");
+            }
+            else
+            {
+                dt = dao.GetActivitiesInfoById(activities);
+            }
+            return dt;
+        }
+
+
+        public string InsertActivities(Activities activities)
             {
                 string result = "Failed";
                 if (!string.IsNullOrEmpty(activities.ActivityName))
