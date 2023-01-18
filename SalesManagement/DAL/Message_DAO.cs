@@ -41,6 +41,30 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
+
+        public DataTable GetMessageInfoById(Message message)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlParameter[] commandParameters = new MySqlParameter[]
+                {
+                    new MySqlParameter("@U_MessageId", message.MessageId),
+                };
+                ds = sqlHelper.SP_DataTable_return("usp_GetMessagesInfoById",commandParameters);
+                if (ds.Tables.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return dt;
+        }
         public string InsertMessagesInfo(Message message)
         {
             string result = "Failed";

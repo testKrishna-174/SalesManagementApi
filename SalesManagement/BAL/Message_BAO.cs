@@ -29,6 +29,20 @@ namespace SalesManagement_API.BAL
             return dt;
         }
 
+        public DataTable GetMessageInfoById(Message message)
+        {
+            DataTable dt = new DataTable();
+            if (message == null || message.MessageId <= 0)
+            {
+                throw new ArgumentException("Values not provided");
+            }
+            else
+            {
+                dt = dao.GetMessageInfoById(message);
+            }
+            return dt;
+        }
+
         public string InsertMessagesInfo(Message message)
         {
             string result = "Failed";

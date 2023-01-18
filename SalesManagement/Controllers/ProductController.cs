@@ -33,6 +33,16 @@ namespace SalesManagement_API.Controllers
         }
 
         [HttpPost]
+        [Route("GetProductsInfoById")]
+        public JsonResult GetProductsInfoById(Product product)
+        {
+            DataTable table = new DataTable();
+            Product_BAO bao = new Product_BAO(_configuration);
+            table = bao.GetProductsInfoById(product);
+            return new JsonResult(table);
+        }
+
+        [HttpPost]
         [Route("InsertProductsInfo")]
         public JsonResult InsertProductsInfo(Product product)
         {

@@ -41,7 +41,31 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
-        public string InsertDesignation(Designation designation)
+        public DataTable GetDesignationInfoById(Designation designation)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlParameter[] commandParameters = new MySqlParameter[]
+                {
+                    new MySqlParameter("@U_DesignationId", designation.DesignationId),
+                };
+
+                ds = sqlHelper.SP_DataTable_return("usp_GetDesignationInfoById", commandParameters);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return dt;
+        }
+
+            public string InsertDesignation(Designation designation)
         {
             string result = "Failed";
             try

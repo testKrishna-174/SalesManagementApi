@@ -41,6 +41,29 @@ namespace SalesManagement_API.DAL
             return dt;
         }
 
+        public DataTable GetActivitiesInfoById(Activities activities)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlParameter[] commandParameters = new MySqlParameter[]
+                {
+                    new MySqlParameter("@U_ActivityId", activities.ActivityId),
+                };
+
+                ds = sqlHelper.SP_DataTable_return("usp_GetActivitiesInfo", commandParameters);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return dt;
+        }
         public string InsertActivities(Activities activities)
         {
             string result = "Failed";

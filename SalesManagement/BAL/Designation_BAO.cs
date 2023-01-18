@@ -28,6 +28,20 @@ namespace SalesManagement_API.BAL
             dt = dao.GetDesignationInfo();
             return dt;
         }
+        public DataTable GetDesignationInfoById(Designation designation)
+        {
+            DataTable dt = new DataTable();
+            if (designation== null || designation.DesignationId <= 0) 
+            {
+                throw new ArgumentException("Values not provided");
+            }
+            else
+            {
+                dt = dao.GetDesignationInfoById(designation);
+            }
+            return dt;
+
+        }
 
         public string InsertDesignation(Designation designation)
         {

@@ -29,6 +29,22 @@ namespace SalesManagement_API.BAL
             return dt;
         }
 
+        public DataTable GetLeadStageInfoById(LeadStage leadStage)
+        {
+            DataTable dt = new DataTable();
+            if (leadStage == null || leadStage.LeadStageId <= 0)
+            {
+                throw new ArgumentException("Values not provided");
+            }
+            else
+            {
+                dt = dao.GetLeadStageInfoById(leadStage);
+            }
+            return dt;
+            
+          
+        }
+
         public string InsertLeadStageInfo(LeadStage leadStage)
         {
             string result = "Failed";

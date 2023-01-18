@@ -33,7 +33,17 @@ namespace SalesManagement_API.Controllers
                 return new JsonResult(table);
             }
 
-            [HttpPost]
+        [HttpPost]
+        [Route("GetLeadStageInfoById")]
+        public JsonResult GetLeadStageInfoById(LeadStage leadStage)
+        {
+            DataTable table = new DataTable();
+            LeadStage_BAO bao = new LeadStage_BAO(_configuration);
+            table = bao.GetLeadStageInfoById(leadStage);
+            return new JsonResult(table);
+        }
+
+        [HttpPost]
             [Route("InsertLeadStageInfo")]
             public JsonResult InsertLeadStageInfo(LeadStage leadStage)
         {
